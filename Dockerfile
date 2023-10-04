@@ -1,9 +1,11 @@
-FROM python:3.7-slim-buster
+FROM python:3.7
+
 WORKDIR /app
+
 COPY . /app
 
-RUN apt update -y
+RUN pip install -r requirements.txt
 
-RUN apt-get update && pip install -r requirements.txt
+EXPOSE 5000
+
 CMD ["python3", "app.py"]
-
