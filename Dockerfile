@@ -1,14 +1,9 @@
-FROM python:3.6
-
+FROM python:3.7-slim-buster
 WORKDIR /app
-
 COPY . /app
 
-RUN pip install -r requirements.txt
+RUN apt update -y
 
-EXPOSE 5000
-
-ENV FLASK_ENV=production
-
-CMD ["python", "app.py"]
+RUN apt-get update && pip install -r requirements.txt
+CMD ["python3", "app.py"]
 
