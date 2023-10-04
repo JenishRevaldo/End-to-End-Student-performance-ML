@@ -1,11 +1,12 @@
 FROM python:3.6
 
-RUN pip install -r requirements.txt
+WORKDIR /app
 
-COPY . /opt/
+COPY . /app
+
+RUN pip install -r /app/requirements.txt
 
 EXPOSE 8000
 
-WORKDIR /opt
+CMD ["python", "app.py"]
 
-ENTRYPOINT ["python", "app.py"]
